@@ -1,0 +1,44 @@
+{
+    "too_hot": [
+      "Sure, you could drop the top today but pack an extra set of bottoms for when the swass sets in.",
+      "We will still know you have a convertible even if the top stays up today. Don't be a try-hard.",
+      "Odds are you aren't good looking enough to ever put the top down, why would you do it when you are sweating your balls off?",
+      "Too hot. There has to be other ways you can get the attention you crave while driving.",
+      "Whether it's the heat or the stupidity that makes you think today would be a top down day, the answer is still no."
+    ],
+    "too_cold": [
+      "You must be drinking if you think today is top down weather and you should know alcohol makes you more susceptible to frostbite.",
+      "Sure, drop the top. No one notices convertibles on nice days, but everyone will remember the idiot they saw today.",
+      "Sure, put the top down. No one cares about your car on nice days, but today you'll be the dinner conversation.",
+      "Thinking of putting the top down? Perfect. You'll be the memorable idiot everyone talks about at dinner.",
+      "Feel free to put the top down. It's a surefire way to make people talk about 'that idiot' at dinner tonight."
+    ],
+    "just_right": [
+      "It's a perfect day for a convertible ride. Enjoy the sunshine!",
+      "Absolutely top-down weather! Go out and make everyone jealous.",
+      "Couldn't ask for better weather to show off your convertible.",
+      "Perfect convertible weather. Even your car agrees.",
+      "Ideal day for a drive with the top down. Enjoy it!"
+    ],
+    "rain": [
+      "Really? In the rain? Keep the top up unless you want a wet interior.",
+      "Rainy day convertible rides are for ducks, not for you.",
+      "Unless you like being soaked, keep that top up.",
+      "Rain and convertibles don't mix. Keep it up and stay dry.",
+      "It's raining. Top down would make you look like a fool."
+    ],
+    "thunderstorm": [
+      "In a storm? Really? You want to turn your car into a bathtub?",
+      "Stormy weather is not the time to show off your convertible.",
+      "Top down in a storm? Only if you want to get hit by flying debris.",
+      "Stay safe, keep the top up. Storms and convertibles are a no-go.",
+      "Thinking of driving in a storm with the top down? That's just asking for trouble."
+    ],
+    "wind": [
+      "Windy day? Keep the top up unless you like eating your own hair.",
+      "Strong winds will make you regret putting the top down.",
+      "Windy weather and convertibles are not a good match.",
+      "Top down in this wind? You'll be a windblown mess.",
+      "Keep the top up unless you enjoy battling the wind."
+    ]
+  }

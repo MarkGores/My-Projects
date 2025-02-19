@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is It Convertible Weather?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #response {
+            margin-top: 20px;
+            line-height: 1.6; /* Adjust the line height */
+        }
+    </style>
+</head>
+<body>
+    <h1>Is It Convertible Weather?</h1>
+    <form id="zipForm" method="GET">
+        <input type="text" id="zipCode" name="zipCode" placeholder="Enter your zip code" required>
+        <button type="submit">Check Weather</button>
+    </form>
+    <h1 id="response">Enter your zip code to find out.</h1>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("DOM fully loaded and parsed");
+
+            const fetchResponses = async () => {
+                try {
+                    const response = await fetch('https://ballmrk.github.io/convertible-weather/responses.json');
+                    return await response.json();
+                } catch (error) {
+                    console.error('Error fetching responses:', error);
+                    return {};
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const zipCode = urlParams.get('zipCode');
+
+            if (zipCode) {
+                console.log("Zip code from URL:", zipCode);
+                const apiKey = 'c18680e0adbbc2b296883ad1ed33d35a';
+                const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+                console.log("Fetching weather data from URL:", url);
+
+                fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok ' + response.statusText);
+                        }
+                        console.log("Response received, converting to JSON");
+                        return response.json();
+                    })
+                    .then(async data => {
+                        console.log("Weather data received:", data);
+                        if (data.cod === 200) {
+                            const tempFahrenheit = data.main.temp; // Temperature is already in Fahrenheit
+                            const weather = data.weather[0].main.toLowerCase();
+                            const windSpeed = data.wind.speed; // Add wind speed for more detailed conditions
+                            const responses = await fetchResponses();
+
+                            console.log("Responses data fetched:", responses);
+
+                            let key;
+                            if (tempFahrenheit > 75) {
+                                key = "too_hot";
+                            } else if (tempFahrenheit <= 50) {
+                                key = "too_cold";
+                            } else if (weather === "clear" && tempFahrenheit > 50 && tempFahrenheit <= 75 && windSpeed < 10) {
+                                key = "just_right";
+                            } else if (weather === "rain") {
+                                key = "rain";
+                            } else if (weather.includes("thunderstorm") || weather.includes("storm")) {
+                                key = "thunderstorm";
+                            } else if (windSpeed >= 10) {
+                                key = "wind";
+                            } else {
+                                key = "just_right"; // Defaulting to just_right if no specific condition matches
+                            }
+
+                            console.log("Key for response:", key);
+
+                            const selectedResponses = responses[key] || [];
+                            const responseMessage = selectedResponses[Math.floor(Math.random() * selectedResponses.length)] || "No response available";
+
+                            console.log("Selected response message:", responseMessage);
+
+                            document.getElementById('response').innerHTML = `${responseMessage}<br>Weather: ${weather}, Temp: ${tempFahrenheit.toFixed(2)}°F, Wind: ${windSpeed} mph`;
+                        } else {
+                            console.log("Invalid zip code response:", data);
+                            document.getElementById('response').textContent = 'Invalid zip code. Please try again.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching weather data:", error);
+                        document.getElementById('response').textContent = 'Error fetching weather data. Please try again.';
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

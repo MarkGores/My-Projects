@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+    <title>Time for Vegas?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div id="loading-content">
+            <div class="spinner"></div>
+            <p>Loading data, please wait...</p>
+        </div>
+    </div>
+
+    <header>
+        <h1>Time for Vegas?</h1>
+        <h2 class="subtitle">Find ideal days to leave Minnesota before the weather shit hits the fan. Hi Mom!</h2>
+    </header>
+
+    <div class="container">
+        <!-- LEFT COLUMN -->
+        <div class="left-column">
+            <div class="card" id="score-overview-card">
+                <h2>Score Overview</h2>
+                <p class="small-note">
+                   Here is your best travel score out of the next 7 days. Green means GO!
+                </p>
+                <div id="gauge_div"></div>
+                <h3>Score Breakdown</h3>
+                <ul id="breakdown-list"></ul>
+            </div>
+
+            <div id="alert-messages"></div>
+
+            <div class="card" id="multi-day-analysis">
+                <h2>Multiple-Day Analysis</h2>
+                <p>Scores for the next 7 days (starting tomorrow):</p>
+                <p class="chart-instruction"><em>Click on a point on the line graph to see that day’s score breakdown and flight details.</em></p>
+                <div id="chart_div"></div>
+                <div id="day-breakdown"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="right-column">
+            <div class="card" id="results"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
