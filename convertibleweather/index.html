@@ -46,8 +46,8 @@
 
             if (zipCode) {
                 console.log("Zip code from URL:", zipCode);
-                const apiKey = 'c18680e0adbbc2b296883ad1ed33d35a';
-                const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=${apiKey}&units=imperial`;
+                const backendUrl = 'https://convertible-weather-proxy-ad2e4e389334.herokuapp.com';
+                const url = `${backendUrl}/weather?zip=${zipCode}`;
                 console.log("Fetching weather data from URL:", url);
 
                 fetch(url)
