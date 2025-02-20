@@ -1,9 +1,11 @@
 // server.js
 const express = require('express');
+const cors = require('cors'); 
 // For Node versions older than 18, uncomment the following line:
 // const fetch = require('node-fetch');
 
 const app = express();
+app.use(cors()); 
 const PORT = process.env.PORT || 3000;
 // Use an environment variable to store your API key securely
 const API_KEY = process.env.OPENWEATHER_API_KEY;
